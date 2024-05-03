@@ -5,9 +5,19 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      '128': '32rem',
+    colors: {
+      primary: '#B48572',
+      navColor: '#815441',
+      searchColor: '#DEC9B0',
+      cardColor: '#EDC89C',
     },
+
+    extend: {
+      maxHeight: {
+        '100': '30rem',
+      }
+    },
+   
   },
   plugins: [],
 }
