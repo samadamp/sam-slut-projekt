@@ -15,6 +15,9 @@ export default {
     extend: {
       maxHeight: {
         '100': '30rem',
+      },
+      width: {
+        '100': '30rem',
       }
     },
    

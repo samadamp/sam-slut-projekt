@@ -5,6 +5,8 @@ export interface BookDetailsType {
   author_name: string;
   first_publish_year: number;
   cover_i: number | null;
+  ratings_average: number | null;
+  first_sentence: string;
 }
 
 export interface BookContextType {

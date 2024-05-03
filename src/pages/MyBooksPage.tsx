@@ -1,5 +1,5 @@
 
-import TextNav from "../Components/TextNav"
+import TextNav from "../Components/NavBar"
 
 export default function MyBooksPage() {
     return (   
