@@ -1,12 +1,14 @@
 import  { useState, createContext, ReactNode } from 'react';
 
 export interface BookDetailsType {
+  key: any;
   title: string;
   author_name: string;
   first_publish_year: number;
   cover_i: number | null;
   ratings_average: number | null;
   first_sentence: string;
+  description: string;
 }
 
 export interface BookContextType {
