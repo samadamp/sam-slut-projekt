@@ -154,7 +154,7 @@ const BookDeets: React.FC<BookDetailsProps> = ({ bookDetails, addToFavorites, ad
         <div className="mb-2 underline font-bold text-xl">
           by {bookDetails.author_name}
         </div>
-        {showRating && <BasicRated rating={bookDetails.ratings_average || 0} />} {/* Default to 0 if missing */}
+        {showRating && <BasicRated rating={bookDetails.ratings_average || 0} />}
       </div>
     </div>
   );

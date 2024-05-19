@@ -1,6 +1,6 @@
 
 import { useEffect, useState, useMemo } from "react";
-import { Book } from "../types"; // Adjust the import path as necessary
+import { Book } from "../types"; 
 
 const useFetchBooks = (inputSubjects: string[], limit: number = 10) => {
   const subjects = useMemo(() => inputSubjects, [JSON.stringify(inputSubjects)]);
@@ -13,7 +13,7 @@ const useFetchBooks = (inputSubjects: string[], limit: number = 10) => {
       try {
         const promises = subjects.map(async (subject) => {
           const url = `https://openlibrary.org/search.json?subject=${subject}&limit=${limit}`;
-          console.log(`Fetching data from: ${url}`); // Debug
+          
           const response = await fetch(url);
 
           if (!response.ok) {
@@ -21,7 +21,7 @@ const useFetchBooks = (inputSubjects: string[], limit: number = 10) => {
           }
 
           const data = await response.json();
-          console.log("API Response:", data); // Debug
+          
 
           return data.docs.map((doc: any) => ({
             key: doc.key,
@@ -29,13 +29,13 @@ const useFetchBooks = (inputSubjects: string[], limit: number = 10) => {
             cover_i: doc.cover_i,
             author_name: doc.author_name,
             first_publish_year: doc.first_publish_year,
-            ratings_average: doc.ratings_average || 0, // Default to 0 if not available
+            ratings_average: doc.ratings_average || 0, 
           }));
         });
 
         const results = await Promise.all(promises);
         const combinedBooks = results.flat();
-        console.log("Fetched Books:", combinedBooks); // Debug
+        
         setBooks(combinedBooks);
       } catch (error: any) {
         console.error("Error fetching book data:", error.message);

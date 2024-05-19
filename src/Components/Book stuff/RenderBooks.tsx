@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { BookContext, BookContextType } from "../state/BookContext";
 import useFetchBooks from "../../hooks/useFetch";
 import BookCards from "./BookCards";
-import { Book } from "../../types"; // Adjust the import path as necessary
+import { Book } from "../../types";
 
 const RenderBooks = () => {
   const { setBookDetails } = useContext(BookContext) as BookContextType;
