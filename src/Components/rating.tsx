@@ -3,9 +3,12 @@ import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
 
-const BasicRating = () => {
-  const [value, setValue] = React.useState<number | null>(0);
+interface BasicRatingProps {
+  value: number | null;
+  onChange: (newValue: number | null) => void;
+}
 
+const BasicRating: React.FC<BasicRatingProps> = ({ value, onChange }) => {
   return (
     <Box
       sx={{
@@ -17,10 +20,9 @@ const BasicRating = () => {
         name="simple-controlled"
         value={value}
         onChange={(event, newValue) => {
-          setValue(newValue);
+          onChange(newValue);
         }}
       />
-      
     </Box>
   );
 }

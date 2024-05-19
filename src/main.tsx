@@ -21,7 +21,7 @@ const router = createBrowserRouter([{
 },
 {
   path: '/OnBooks/:bookCategory/:bookId',
-  element: <OnBookPage/>,
+  element: <OnBookPage />,
   errorElement: <NotFoundPage />,
 }]);
 
