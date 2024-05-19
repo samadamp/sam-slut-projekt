@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { BookContext, BookContextType } from "./BookContext";
 import React, { useContext } from 'react';
 
+
 const SearchComponent = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([] as any[]);
