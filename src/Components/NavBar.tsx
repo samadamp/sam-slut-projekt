@@ -6,15 +6,17 @@ const TextNav = () => {
 
     return (
         <>
-        <div className="flex items-center  gap-96 bg-navColor p-4 rounded-b-xl ">
+        <div className="flex items-center justify-center  gap-96 bg-Primary p-5 rounded-b-xl ">
 
-        <Link to ="/">{<h1 className="ml-5 text-4xl">Pankys Library</h1>}</Link>
-        <div className="text-2xl">
-        <Link to ="/myBooks">My Books</Link>
+        
+        
+        <Link to ="/">{<h1 className="text-4xl ">Pankys Library</h1>}</Link>
+        <div className="mr-9">
+        <SearchComponent  />
         </div>
-        <div className="mr-20">  
-        <SearchComponent />
-        </div>
+        
+        <Link className="text-3xl" to ="/myBooks">My Books📚</Link>
+        
         </div>
         </>
     )

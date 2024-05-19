@@ -1,16 +1,9 @@
+
 import { useEffect, useState, useMemo } from "react";
+import { Book } from "../types"; // Adjust the import path as necessary
 
-interface Book {
-  key: string;
-  title: string;
-  cover_id: number;
-  authors?: { name: string }[];
-  first_publish_year?: number;
-  ratings_average?: number;
-}
-
-const useFetchBooks = (inputSubjects: string[]) => {
-  const subjects = useMemo(() => inputSubjects,[JSON.stringify(inputSubjects)]);
+const useFetchBooks = (inputSubjects: string[], limit: number = 10) => {
+  const subjects = useMemo(() => inputSubjects, [JSON.stringify(inputSubjects)]);
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -19,8 +12,8 @@ const useFetchBooks = (inputSubjects: string[]) => {
     const fetchBooks = async () => {
       try {
         const promises = subjects.map(async (subject) => {
-          const url = `https://openlibrary.org/subjects/${subject}.json`;
-          console.log(`Fetching data from: ${url}`);
+          const url = `https://openlibrary.org/search.json?subject=${subject}&limit=${limit}`;
+          console.log(`Fetching data from: ${url}`); // Debug
           const response = await fetch(url);
 
           if (!response.ok) {
@@ -28,18 +21,21 @@ const useFetchBooks = (inputSubjects: string[]) => {
           }
 
           const data = await response.json();
-          return data.works.map((work: any) => ({
-            key: work.key,
-            title: work.title,
-            cover_id: work.cover_id,
-            authors: work.authors,
-            first_publish_year: work.first_publish_year,
-            ratings_average: work.ratings_average,
+          console.log("API Response:", data); // Debug
+
+          return data.docs.map((doc: any) => ({
+            key: doc.key,
+            title: doc.title,
+            cover_i: doc.cover_i,
+            author_name: doc.author_name,
+            first_publish_year: doc.first_publish_year,
+            ratings_average: doc.ratings_average || 0, // Default to 0 if not available
           }));
         });
 
         const results = await Promise.all(promises);
         const combinedBooks = results.flat();
+        console.log("Fetched Books:", combinedBooks); // Debug
         setBooks(combinedBooks);
       } catch (error: any) {
         console.error("Error fetching book data:", error.message);
@@ -50,9 +46,14 @@ const useFetchBooks = (inputSubjects: string[]) => {
     };
 
     fetchBooks();
-  }, [subjects]);
+  }, [subjects, limit]);
 
   return { books, loading, error };
 };
 
 export default useFetchBooks;
+
+
+
+
+

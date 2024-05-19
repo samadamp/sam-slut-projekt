@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { BookContext, BookContextType } from "./BookContext";
+import { BookContext, BookContextType } from "./state/BookContext";
 import React, { useContext } from 'react';
 
 
@@ -52,11 +52,11 @@ const SearchComponent = () => {
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         placeholder="Enter search query...🔍"
-        className="border border-gray-300 rounded-xl px-4 py-2 mr-2 bg-searchColor"
+        className="border border-gray-300 rounded-xl px-6 py-3 mr-2 bg-searchColor"
       />
 
       {dropdownOpen && results.length > 0 && (
-        <div className="absolute w-96 mt-2 overflow-auto bg-white border border-gray-300 rounded max-h-100 z-10 bg-searchColor">
+        <div className="absolute w-96 mt-2 overflow-auto bg-Accent border border-gray-300 rounded max-h-100 z-10 bg-searchColor">
           <ul className="py-1">
             {results.slice(0, 10).map((result) => (
               <li
