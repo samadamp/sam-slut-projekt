@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { BookContext, BookContextType } from "./state/BookContext";
+import { BookContext, BookContextType } from "../state/BookContext";
 import React, { useContext } from 'react';
 
 

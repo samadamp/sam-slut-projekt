@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import BasicRating from "../ratings/rating";
 import BasicRated from "../ratings/CurrentlyRated";
-import { BookContextType } from "../state/BookContext";
+import { BookContextType } from "../../state/BookContext";
 
 interface BookDetailsProps {
   bookDetails: BookContextType['bookDetails'];

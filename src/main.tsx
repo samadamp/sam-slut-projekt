@@ -5,7 +5,7 @@ import HomePage from './pages/HomePage'
 import NotFoundPage from './pages/NotFoundPage'
 import MyBooksPage from './pages/MyBooksPage'
 import OnBookPage from './pages/OnBookPage'
-import { BookProvider } from './Components/state/BookContext'
+import { BookProvider } from './state/BookContext'
 
 import './index.css'
 

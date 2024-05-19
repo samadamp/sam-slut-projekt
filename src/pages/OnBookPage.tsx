@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import TextNav from "../Components/NavBar";
-import { BookContext, BookContextType } from "../Components/state/BookContext";
+import { BookContext, BookContextType } from "../state/BookContext";
 import BookDeets from "../Components/Book stuff/BookDeets";
 import Footer from "../Components/Footer";
 

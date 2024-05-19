@@ -6,3 +6,6 @@ export const pagnationUtil = (books: any[], currentPage: number, booksPerPage: n
 export const getTotalPages = (books: any[], booksPerPage: number = 5) => {
     return Math.ceil(books.length / booksPerPage);
 }
+
+
+

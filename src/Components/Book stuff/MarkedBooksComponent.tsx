@@ -1,5 +1,5 @@
 import { useContext, useMemo, useState } from "react";
-import { BookContext, BookContextType } from "../state/BookContext";
+import { BookContext, BookContextType } from "../../state/BookContext";
 import BasicRated from "../ratings/CurrentlyRated";
 import { Link } from "react-router-dom";
 
