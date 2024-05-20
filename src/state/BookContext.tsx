@@ -6,27 +6,27 @@ export type BookDetailsType = {
   author_name: string;
   first_publish_year: number;
   cover_i: number;
-  ratings_average: number
+  ratings_average: number;
   first_sentence: string;
   description: string;
   review: string;
   totalPages: number;
   rating: number | null;
-}
+};
 
 export interface BookContextType {
   bookDetails: BookDetailsType | null;
   setBookDetails: React.Dispatch<React.SetStateAction<BookDetailsType | null>>;
   favoriteBooks: BookDetailsType[];
   addToFavorites: (book: BookDetailsType) => void;
+  removeFromFavorites: (book: BookDetailsType) => void;
   readBooks: BookDetailsType[];
   addToRead: (
     book: BookDetailsType,
     review: string,
-    totalePages: number,
+    totalPages: number,
     rating: number | null
   ) => void;
-  removeFromFavorites: (book: BookDetailsType) => void;
 }
 
 export const BookContext = createContext<BookContextType | undefined>(
@@ -43,14 +43,18 @@ export const BookProvider = ({ children }: BookProviderProps) => {
   const [readBooks, setReadBooks] = useState<BookDetailsType[]>([]);
 
   const addToFavorites = (book: BookDetailsType) => {
-    const isBookInFavorites = favoriteBooks.some(
-      (favoriteBook) => favoriteBook.key === book.key
-    );
-    if (!isBookInFavorites) {
-      setFavoriteBooks((prevBooks) => [...prevBooks, book]);
-    } else {
-      alert("Book is already in favorites.");
-    }
+    setFavoriteBooks((prevBooks) => {
+      const isBookInFavorites = prevBooks.some(
+        (favoriteBook) => favoriteBook.key === book.key
+      );
+      if (!isBookInFavorites) {
+        return [...prevBooks, book];
+      } else {
+        return prevBooks.filter(
+          (favoriteBook) => favoriteBook.key !== book.key
+        );
+      }
+    });
   };
 
   const removeFromFavorites = (book: BookDetailsType) => {

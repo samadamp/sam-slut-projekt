@@ -1,7 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import BasicRating from "../ratings/rating";
 import BasicRated from "../ratings/CurrentlyRated";
-import { BookContextType } from "../../state/BookContext";
+import { BookContextType, BookContext } from "../../state/BookContext";
+import useToggle from "../../hooks/useToggle";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
+
 
 interface BookDetailsProps {
   bookDetails: BookContextType['bookDetails'];
@@ -11,12 +16,25 @@ interface BookDetailsProps {
 }
 
 const BookDeets: React.FC<BookDetailsProps> = ({ bookDetails, addToFavorites, addToRead, showRating }) => {
+  const { favoriteBooks, removeFromFavorites } = useContext(BookContext) as BookContextType;
   const [description, setDescription] = useState<string | null>(null);
   const [isExpanded, setIsExpanded] = useState(false);
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [review, setReview] = useState("");
   const [totalPages, setTotalPages] = useState("");
   const [rating, setRating] = useState<number | null>(0);
+  const [isFav, toggleFav] = useToggle(false);
+
+  useEffect(() => {
+    if (bookDetails) {
+      const isBookFavorite = favoriteBooks.some(book => book.key === bookDetails.key);
+      if (isBookFavorite) {
+        toggleFav(true); 
+      } else {
+        toggleFav(false); 
+      }
+    }
+  }, [bookDetails, favoriteBooks, toggleFav]);
 
   const getCoverUrl = (coverId: number) => {
     return `https://covers.openlibrary.org/b/id/${coverId}-M.jpg`;
@@ -56,7 +74,12 @@ const BookDeets: React.FC<BookDetailsProps> = ({ bookDetails, addToFavorites, ad
 
   const handleAddToFavorites = () => {
     if (bookDetails) {
-      addToFavorites(bookDetails);
+      if (isFav) {
+        removeFromFavorites(bookDetails);
+      } else {
+        addToFavorites(bookDetails);
+      }
+      toggleFav(); 
     }
   };
 
@@ -89,14 +112,14 @@ const BookDeets: React.FC<BookDetailsProps> = ({ bookDetails, addToFavorites, ad
               className="w-full rounded-2xl"
             />
             <button
-              className="border rounded p-1 font-bold text-xl my-3"
+              className={` rounded p-1 font-bold text-xl my-3`}
               onClick={handleAddToFavorites}
             >
-              Add to favs
+              <FontAwesomeIcon icon={isFav ? solidHeart : regularHeart} className={`text-2xl ${isFav ? 'text-Heartred' : 'text-Heartwhite'}`} />
             </button>
 
             <button
-              className="border rounded p-1 font-bold text-xl my-1 "
+              className="border rounded p-1 font-bold text-xl my-1"
               onClick={handleAddToRead}
             >
               Already Read?
@@ -135,7 +158,7 @@ const BookDeets: React.FC<BookDetailsProps> = ({ bookDetails, addToFavorites, ad
       </div>
       <div>
         <div className="flex">
-          <div className="mb-2 text-6xl"> {bookDetails.title}</div>
+          <div className="mb-2 text-6xl">{bookDetails.title}</div>
           <div className="mb-2 text-2xl mt-4 ml-4">
             {bookDetails.first_publish_year}
           </div>

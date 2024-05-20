@@ -51,7 +51,7 @@ export default function MarkedBooks() {
   return (
     <div className="flex flex-row justify-center items-start gap-10 mt-8">
       <div className="flex flex-col w-1/2  p-4 rounded-lg">
-        <h1 className="text-center mb-4 text-2xl">My Favorite Books</h1>
+        <h1 className="text-center mb-4 text-4xl font-bold ">My Favorite Books</h1>
         {favoriteBooks.length > 0 ? (
           <div className="flex justify-center">
             <div className="rounded p-4">
@@ -76,7 +76,7 @@ export default function MarkedBooks() {
                         onClick={() => removeFromFavorites(book)}
                         className="text-red-500 mt-5"
                       >
-                        Remove
+                        ❌
                       </button>
                     </div>
                   ))}
@@ -108,7 +108,7 @@ export default function MarkedBooks() {
       </div>
 
       <div className="flex flex-col w-1/2  p-4 rounded-lg">
-        <h1 className="text-center mb-4 text-2xl">My Read Books</h1>
+        <h1 className="text-center mb-4 text-4xl font-bold">My Read Books</h1>
         {readBooks.length > 0 ? (
           <div className="flex justify-center">
             <div className="rounded p-4">
@@ -129,15 +129,15 @@ export default function MarkedBooks() {
                           />
                         </div>
                       </Link>
-                      <p>{book.review}</p>
-                      <p>Total Pages: {book.totalPages}</p>
+                      <p className="text-xl mt-5">{book.review}</p>
+                      <p className="text-xl">Pages: {book.totalPages}</p>
                       <p>
-                        <BasicRated rating={book.rating} />
+                      <BasicRated rating={book.rating} />
                       </p>
                     </div>
                   ))}
               </div>
-              <div className="flex justify-center mt-4">
+              <div className="flex justify-center ">
                 <button
                   className="px-4 py-2 text-2xl cursor-pointer"
                   onClick={readPrevPage}
@@ -155,10 +155,10 @@ export default function MarkedBooks() {
                   {">"}
                 </button>
               </div>
-              <div className="text-center mb-4">
+              <div className="text-center mb-4 font-bold">
                 Total Pages Read: {totalPagesRead}
               </div>
-              <div className="text-center mb-4">
+              <div className="text-center mb-4 font-bold">
                 Total Books Read: {totalBooksRead}
               </div>
             </div>

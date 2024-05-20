@@ -16,7 +16,7 @@ export default function BasicRated({rating}: RatedProps) {
     >
       
       
-      <Typography component="legend">Rating</Typography>
+      <Typography component="legend" >Rating</Typography>
       <Rating name="read-only" value={rating} readOnly />
     </Box>
   );

@@ -11,6 +11,9 @@ export default {
       Accent: '#95c0f2',
       Background: '#d7d8d9',
       Text: "#4A4A4A",
+      Toggle: "#6cdd3b",
+      Heartred: "#da1708",
+      Heartwhite: "#ffffff",
     },
     /* colors: {
       primary: '#B48572',
