@@ -2,8 +2,8 @@
 import { useEffect, useState, useMemo } from "react";
 import { Book } from "../types"; 
 
-const useFetchBooks = (inputSubjects: string[], limit: number = 10) => {
-  const subjects = useMemo(() => inputSubjects, [JSON.stringify(inputSubjects)]);
+const useFetchBooks = (bookSubejct: string[], limit: number = 10) => {
+  const subjects = useMemo(() => bookSubejct, [JSON.stringify(bookSubejct)]);
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
