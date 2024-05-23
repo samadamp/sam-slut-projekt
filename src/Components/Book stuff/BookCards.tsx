@@ -1,22 +1,22 @@
-import { FC, useState } from "react";
+import {  useState } from "react";
 import { Link } from "react-router-dom";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { pagnationUtil, getTotalPages } from "../../utils/paginationUtil";
-import { Book } from "../../types"; 
+import { pagnationUtil, getTotalPages } from "../../utils/UtilFunctions";
+import { BookTypes } from "../../types"; 
 
-interface BookListProps {
-  books: Book[];
+type BookListProps = {
+  books: BookTypes[];
   category: string;
-  onBookClick: (book: Book) => void;
+  onBookClick: (book: BookTypes) => void;
 }
 
-const BookCards: FC<BookListProps> = ({ books, category, onBookClick }) => {
+const BookCards = ({ books, category, onBookClick }: BookListProps) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const handleNextPage = () => {
-    if (currentPage < getTotalPages(books)) {
+    if (currentPage < getTotalPages(books )) {
       setCurrentPage(currentPage + 1);
     }
   };

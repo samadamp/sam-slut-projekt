@@ -8,7 +8,7 @@ interface BasicRatingProps {
   onChange: (newValue: number | null) => void;
 }
 
-const BasicRating: React.FC<BasicRatingProps> = ({ value, onChange }) => {
+const UserRating: React.FC<BasicRatingProps> = ({ value, onChange }) => {
   return (
     <Box
       sx={{
@@ -19,7 +19,7 @@ const BasicRating: React.FC<BasicRatingProps> = ({ value, onChange }) => {
       <Rating
         name="simple-controlled"
         value={value}
-        onChange={(event, newValue) => {
+        onChange={(e, newValue) => {
           onChange(newValue);
         }}
       />
@@ -27,4 +27,4 @@ const BasicRating: React.FC<BasicRatingProps> = ({ value, onChange }) => {
   );
 }
 
-export default BasicRating;
+export default UserRating;

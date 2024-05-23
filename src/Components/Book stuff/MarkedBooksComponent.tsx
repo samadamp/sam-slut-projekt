@@ -1,6 +1,6 @@
 import { useContext, useMemo, useState } from "react";
 import { BookContext, BookContextType } from "../../state/BookContext";
-import BasicRated from "../ratings/CurrentlyRated";
+import AverageRating from "../ratings/AverageRating";
 import { Link } from "react-router-dom";
 
 export default function MarkedBooks() {
@@ -132,7 +132,7 @@ export default function MarkedBooks() {
                       <p className="text-xl mt-5">{book.review}</p>
                       <p className="text-xl">Pages: {book.totalPages}</p>
                       <p>
-                      <BasicRated rating={book.rating} />
+                      <AverageRating rating={book.rating} />
                       </p>
                     </div>
                   ))}

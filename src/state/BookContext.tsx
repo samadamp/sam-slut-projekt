@@ -1,28 +1,18 @@
 import { useState, createContext, ReactNode } from "react";
+import { BookTypes } from "../types";
 
-export type BookDetailsType = {
-  key: any;
-  title: string;
-  author_name: string;
-  first_publish_year: number;
-  cover_i: number;
-  ratings_average: number;
-  first_sentence: string;
-  description: string;
-  review: string;
-  totalPages: number;
-  rating: number | null;
-};
 
-export interface BookContextType {
-  bookDetails: BookDetailsType | null;
-  setBookDetails: React.Dispatch<React.SetStateAction<BookDetailsType | null>>;
-  favoriteBooks: BookDetailsType[];
-  addToFavorites: (book: BookDetailsType) => void;
-  removeFromFavorites: (book: BookDetailsType) => void;
-  readBooks: BookDetailsType[];
+
+
+export type BookContextType = {
+  bookDetails: BookTypes | null;
+  setBookDetails: React.Dispatch<React.SetStateAction<BookTypes | null>>;
+  favoriteBooks: BookTypes[];
+  addToFavorites: (book: BookTypes) => void;
+  removeFromFavorites: (book: BookTypes) => void;
+  readBooks: BookTypes[];
   addToRead: (
-    book: BookDetailsType,
+    book: BookTypes,
     review: string,
     totalPages: number,
     rating: number | null
@@ -38,11 +28,11 @@ interface BookProviderProps {
 }
 
 export const BookProvider = ({ children }: BookProviderProps) => {
-  const [bookDetails, setBookDetails] = useState<BookDetailsType | null>(null);
-  const [favoriteBooks, setFavoriteBooks] = useState<BookDetailsType[]>([]);
-  const [readBooks, setReadBooks] = useState<BookDetailsType[]>([]);
+  const [bookDetails, setBookDetails] = useState<BookTypes | null>(null);
+  const [favoriteBooks, setFavoriteBooks] = useState<BookTypes[]>([]);
+  const [readBooks, setReadBooks] = useState<BookTypes[]>([]);
 
-  const addToFavorites = (book: BookDetailsType) => {
+  const addToFavorites = (book: BookTypes) => {
     setFavoriteBooks((prevBooks) => {
       const isBookInFavorites = prevBooks.some(
         (favoriteBook) => favoriteBook.key === book.key
@@ -57,14 +47,14 @@ export const BookProvider = ({ children }: BookProviderProps) => {
     });
   };
 
-  const removeFromFavorites = (book: BookDetailsType) => {
+  const removeFromFavorites = (book: BookTypes) => {
     setFavoriteBooks((prevBooks) =>
       prevBooks.filter((favoriteBook) => favoriteBook.key !== book.key)
     );
   };
 
   const addToRead = (
-    book: BookDetailsType,
+    book: BookTypes,
     review: string,
     totalPages: number,
     rating: number | null

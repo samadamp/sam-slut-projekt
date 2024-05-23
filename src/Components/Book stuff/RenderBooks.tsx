@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { BookContext, BookContextType } from "../../state/BookContext";
 import useFetchBooks from "../../hooks/useFetch";
 import BookCards from "./BookCards";
-import { Book } from "../../types";
+import { BookTypes } from "../../types";
 
 const RenderBooks = () => {
   const { setBookDetails } = useContext(BookContext) as BookContextType;
@@ -23,13 +23,13 @@ const RenderBooks = () => {
     error: fantasyError,
   } = useFetchBooks(["Fantasy"]);
 
-  const handleBookClick = (book: Book) => {
+  const handleBookClick = (book: BookTypes) => {
     const bookDetails = {
       key: book.key,
       title: book.title,
-      author_name: book.author_name
-        ? book.author_name.join(", ")
-        : "Unknown author",
+      author_name: Array.isArray(book.author_name)
+      ? book.author_name.join(", ")
+      : book.author_name || "Unknown author",
       first_publish_year: book.first_publish_year || 0,
       cover_i: book.cover_i,
       ratings_average: book.ratings_average || 0,

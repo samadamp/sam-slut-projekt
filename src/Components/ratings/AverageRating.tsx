@@ -7,7 +7,7 @@ type RatedProps = {
     rating: number | null;
 }
 
-export default function BasicRated({rating}: RatedProps) {
+export default function AverageRating({rating}: RatedProps) {
   return (
     <Box
       sx={{

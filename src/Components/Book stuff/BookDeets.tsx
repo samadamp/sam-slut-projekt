@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
-import BasicRating from "../ratings/rating";
-import BasicRated from "../ratings/CurrentlyRated";
+import UserRating from "../ratings/UserRating";
+import AverageRating from "../ratings/AverageRating";
 import { BookContextType, BookContext } from "../../state/BookContext";
 import useToggle from "../../hooks/useToggle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -140,7 +140,7 @@ const BookDeets: React.FC<BookDetailsProps> = ({ bookDetails, addToFavorites, ad
                   className="border p-2 w-full mt-2"
                 />
                 <div className="mt-2">
-                  <BasicRating
+                  <UserRating
                     value={rating}
                     onChange={(newRating) => setRating(newRating)}
                   />
@@ -177,7 +177,7 @@ const BookDeets: React.FC<BookDetailsProps> = ({ bookDetails, addToFavorites, ad
         <div className="mb-2 underline font-bold text-xl">
           by {bookDetails.author_name}
         </div>
-        {showRating && <BasicRated rating={bookDetails.ratings_average || 0} />}
+        {showRating && <AverageRating rating={bookDetails.ratings_average || 0} />}
       </div>
     </div>
   );

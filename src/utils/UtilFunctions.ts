@@ -8,4 +8,3 @@ export const getTotalPages = (books: any[], booksPerPage: number = 5) => {
 }
 
 
-
