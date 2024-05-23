@@ -16,7 +16,7 @@ const BookCards = ({ books, category, onBookClick }: BookListProps) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const handleNextPage = () => {
-    if (currentPage < getTotalPages(books )) {
+    if (currentPage < getTotalPages(books)) {
       setCurrentPage(currentPage + 1);
     }
   };
