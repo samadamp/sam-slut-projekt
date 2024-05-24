@@ -29,7 +29,7 @@ För att köra denna app lokalt, följ dessa steg:
 När appen körs, följ dessa steg för att använda den:
 
 1. Sökning: Skriv in en fråga i sökfältet och tryck på Enter för att söka efter böcker. Klicka på en bok för att se dess detaljer.
-2. Favoritböcker: Klicka på "Add to Favs" kanppen för att lägga till en bok som favorit. Favoritböcker visas på sidan My Books. Går även att ta bort böcker ifrån dina favorites.
+2. Favoritböcker: Klicka på Hjärtikonen för att lägga till en bok som favorit. Favoritböcker visas på sidan My Books. Går även att ta bort böcker ifrån dina favorites antingen genom att trycka på hjärtat igen eller inne i My Books.
 3. Lästa böcker: Klicka på knappen "Already Read?" för att lägga till en bok i din lista över lästa böcker. Du kan också lämna en recension och betyg för varje läst bok och hur många sidor den var.
 
 
