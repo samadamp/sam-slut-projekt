@@ -1,5 +1,5 @@
 import TextNav from "../Components/NavBar";
-import BookCards from "../Components/Book stuff/RenderBooks";
+import BookCards from "../Components/Book stuff/RenderCards";
 import Footer from "../Components/Footer";
 
 export default function HomePage() {

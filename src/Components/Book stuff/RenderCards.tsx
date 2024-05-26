@@ -56,12 +56,12 @@ const RenderBooks = () => {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center mt-10 gap-10">
-      <BookCards
+    <div className="flex flex-col justify-center items-center mt-10 gap-10"> 
+     { <BookCards
         books={survivalBooks}
         category="Survival"
         onBookClick={handleBookClick}
-      />
+      />}
       <BookCards
         books={adventureBooks}
         category="Adventure"
