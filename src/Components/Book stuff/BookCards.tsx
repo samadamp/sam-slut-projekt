@@ -62,6 +62,9 @@ const BookCards = ({ books, category, onBookClick }: BookListProps) => {
         </div>
       )}
     </Card>
+
+    
+    
   );
 };
 
